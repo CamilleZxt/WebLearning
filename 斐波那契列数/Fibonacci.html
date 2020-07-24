@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fibonacci</title>
+</head>
+<body>
+	<!-- <div>Fibonacci1(50):</div> -->
+	<script>
+		//第一种递归
+		function fibonacci1(n){
+			if(n==0|| n==1){
+				return 1;
+			}
+			return fibonacci1(n-1)+fibonacci1(n-2);
+		}
+		//第二种递归
+		function fibonacci2(a,b,n){
+			if(n>1){
+				return fibonacci2(a+b,a,n-1);
+			}
+			return a;
+		}
+
+		//第三种循环实现：类推
+		//时间复杂度O(n)
+		function fibonacci3(n){
+			if(n==0|| n==1){
+				return 1;
+			}
+			var arr0 = 1;
+			var arr1 = 1;
+			var arrn;
+			for(let i=2;i<=n;i++){
+				arrn = arr0+arr1;
+				arr0 = arr1;
+				arr1 = arrn;
+			}
+			
+			return arrn;
+		}
+
+		document.write("Fibonacci1:"+ fibonacci1(10));
+		document.write("Fibonacci2:"+ fibonacci2(1,1,10));
+		document.write("Fibonacci3:"+ fibonacci3(10));
+
+	</script>>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+
+        .aa{
+            width:200px;
+            height:150px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let box = document.getElementById('box');
+        //分离读写
+        // box.style.width = '200px';
+        // box.style.height = '200px';
+        // // console.log(box.clientWidth);//在此处读，上面的两次写入会渲染一次；下面再有写入会再次渲染
+        // box.style.margin = '20px';
+        // console.log(box.clientWidth);//全部写完再读，读写分离，现代浏览器都有渲染队列机制，只会渲染一次
+
+        //批量处理
+        // box.style.cssText = 'width:200px;height:150px;';
+        // //或者写个样式类,加给box
+        // box.className ='aa'
+
+        //缓存处理
+        // box.style.width = box.clientWidth + 10 + 'px';//clientWidth会刷新渲染队列，但是可以先全部读出来缓存，再写入
+        // box.style.height = box.clientHeight + 10 + 'px';//clientHeight会刷新渲染队列
+        let a = box.clientHeight;
+        let b = box.clientWidth;
+        box.style.width = a + 10 + 'px';
+        box.style.height = b + 10 + 'px';
+
+    </script>
+</body>
+</html>

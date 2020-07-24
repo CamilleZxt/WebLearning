@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-shadow设置边框</title>
+	<style type="text/css">
+	input{
+		border: none;
+		outline:none;
+		border-bottom: 1px solid #375689
+		padding-bottom: 0px;
+		margin-bottom: 20px;
+	}
+	input:focus{
+		border:none;
+		padding-top: 0;
+		/*box-shadow: 5px 5px #fcf876,
+					-5px 5px #fcf876,
+					5px -5px #fcf876,
+					-5px -5px #fcf876;*/
+		/*或*/
+		box-shadow: 0 0 0 5px #fcf876;
+	}
+	img{
+		position: relative;
+		z-index: -3;
+	}
+	#xzdiv1{
+		margin-left: 20px;
+		margin-bottom: 100px;
+		height: 404px;
+		width: 717px;
+		box-shadow: 0 0 0 20px #238999;
+	}
+	#xzdiv2{
+		display: flex;
+		justify-content: center;
+		margin:0 auto;
+		margin-bottom: 50px;
+	}
+	#xzimg{
+		box-shadow: 0 0 0 10px #254546,
+					0 0 0 30px white,
+					-40px -40px #238999,
+					40px 40px #238999;
+	}
+	</style>
+</head>
+<body>
+	<h2>box-shadow:x轴偏移 y轴偏移 模糊半径 扩散半径 颜色 inset	</h2>
+	<h3>inset表示内阴影</h3>
+	<div>
+		<input type="text" placeholder="有什么话说？">
+	</div>
+	
+	<div id="xzdiv1">
+		<img src="xz.jpg" alt="xz">
+	</div>
+
+	<div id="xzdiv2">
+		<img id="xzimg" src="xz.jpg" alt="xz">
+	</div>
+</body>
+</html>

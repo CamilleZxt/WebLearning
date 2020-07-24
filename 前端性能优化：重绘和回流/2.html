@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+
+    </ul>
+    <script>
+        // 字符串拼接
+        let str = ``;
+        for (let i = 0; i < 5; i++) {
+            str += `<li>${i}</li>`;
+        }
+        box.innerHTML = str;
+
+        // box.style.left = '100px';//向右移100px;产生一次回流
+        box.style.transform = 'translateX(100px)';//transform属性触发硬件加速，不会引发回流重绘
+
+
+        // for(let i=0;i<5;i++){
+        //     let newLi = document.createElement('li');
+        //     newLi.innerHTML = i;
+        //     box.appendChild(newLi);//循环一次，append一次，导致循环几次，渲染几次，也就是回流几次
+        // }
+
+        //利用文档碎片
+        // let frg = document.createDocumentFragment();
+        // for(let i=0;i<5;i++){
+        //     let newLi = document.createElement('li');
+        //     newLi.innerHTML=i;
+        //     //创建的li放到文档碎片中
+        //     frg.appendChild(newLi);
+        // }
+        // //一次性把内容放到容器中，只渲染一次dom，引发一次回流
+        // box.appendChild(frg);
+        // frg = null;//最后把frg清掉
+
+
+
+    </script>
+
+</body>
+
+</html>
