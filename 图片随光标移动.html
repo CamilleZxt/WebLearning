@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>xx</title>
+	<style>	
+	img{
+		position: absolute;
+	}
+	</style>
+</head>
+<body>
+	<img src="C:\Users\13743\Desktop\07-10 JavaScript网页编程\07-10 JavaScript网页编程\02-WebAPI编程资料\Web APIs-day03\2-案例\images\angel.gif" alt="">
+	
+	<script>
+	var pic = document.querySelector('img');
+	document.addEventListener('mousemove',function(e){
+		var x = e.pageX;
+		var y = e.pageY
+		console.log(e.clientX);
+		console.log(e.clientY);
+		pic.style.left = x + 'px';
+		pic.style.top = y + 'px'; 
+	})
+	</script>
+</body>
+</html>
