@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS实现animation动画</title>	
+	<style>
+	.sliderbar{
+		 position: fixed;
+            right: 0;
+            bottom: 100px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            background-color: purple;
+            color: #fff;
+
+	}
+	.arrow{
+		 	position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background-color: purple;
+	}
+	.feedback{
+		 position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+	}
+	
+	</style>
+	<script src='animation.js'></script>
+</head>
+<body>
+	<div class="sliderbar">
+		<div class="arrow">		
+			<span>←</span>
+		</div>
+		<div class="feedback">问题反馈</div>
+	</div>
+	
+	<script>
+	var sliderbar = document.querySelector('.sliderbar');
+	var feedback = document.querySelector('.feedback');
+	// 当我们鼠标经过 sliderbar 就会让 con这个盒子滑动到左侧
+	sliderbar.addEventListener('mouseenter',function(e){
+		animation(feedback,-160,function(){
+			sliderbar.children[0].innerHTML = '→'
+		})
+	})
+	// 当我们鼠标离开 sliderbar 就会让 con这个盒子滑动到右侧
+	sliderbar.addEventListener('mouseleave',function(e){
+		animation(feedback,0,function(){
+			sliderbar.children[0].innerHTML = '←'
+		})
+	})
+
+	</script>
+</body>
+</html>
