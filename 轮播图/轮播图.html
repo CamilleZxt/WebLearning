@@ -3,17 +3,102 @@
 <head>
 	<meta charset="UTF-8">
 	<title>轮播图</title>
-	<style></style>
+	<style>
+	.lunbo{
+		/*width: 800px;*/
+		/*height: 500px;*/
+		/*margin-left: 40px; */
+
+	    width: 7210px;
+	    height: 455px;
+	    margin-left: 219px;
+	    margin-top: 10px;
+
+	}
+	.focus {
+		position: relative;
+		/*margin: 0 auto;*/
+	    width: 721px;
+	    height: 455px;
+	    background-color: purple;
+	    overflow: hidden;
+	}
+	.focus a{
+		text-decoration:none;
+		list-style-type:none;
+	}
+
+	.focus ul {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 600%;
+	    padding: 0;
+	    margin:0; 
+	    list-style:none;
+	}
+
+	.focus ul li {
+	    float: left;
+	}
+	.arrow-l,
+	.arrow-r {
+	    display: none;
+	    position: absolute;
+	    top: 50%;
+	    margin-top: -20px;
+	    width: 24px;
+	    height: 40px;
+	    background: rgba(0, 0, 0, .3);
+	    text-align: center;
+	    line-height: 40px;
+	    color: #fff;
+	    font-family: 'icomoon';
+	    font-size: 18px;
+	    z-index: 2;
+	}
+
+	.arrow-r {
+	    right: 0;
+	}
+
+	.circle {
+	    position: absolute;
+	    bottom: 10px;
+	    left: 50%;
+	    transform: translate(-50%,-50%);
+	    list-style:none
+
+	}
+
+	.circle li {
+	    float: left;
+	    width: 8px;
+	    height: 8px;
+	    /*background-color: #fff;*/
+	    border: 2px solid rgba(255, 255, 255, 0.5);
+	    margin: 0 3px; 
+	    border-radius: 50%;
+	    /*鼠标经过显示小手*/
+	    cursor: pointer;
+	}
+
+	.current {
+    	background-color: #fff;
+}
+
+	</style>
+	<script src='animation.js'></script>
 	<script src='轮播图.js'></script>
 </head>
 <body>
-	<div class="focus fl">
+	<div class="lunbo">
+	<span>轮播图</span>
+		<div class="focus fl">
                 <!-- 左侧按钮 -->
-                <a href="javascript:;" class="arrow-l">
-                    &lt;
-                 </a>
+                <a href="javascript:;"  class="arrow-l">&lt;</a>
                 <!-- 右侧按钮 -->
-                <a href="javascript:;" class="arrow-r">  </a>
+                <a href="javascript:;" class="arrow-r">&gt;</a>
                 <!-- 核心的滚动区域 -->
                 <ul>
                     <li>
@@ -33,6 +118,7 @@
                 <ol class="circle">
 
                 </ol>
-            </div>
+    	</div>
+	</div>
 </body>
 </html>
