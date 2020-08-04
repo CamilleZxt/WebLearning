@@ -24,13 +24,13 @@ window.addEventListener('load', function () {
             ul.style.transition = 'none';
 
             //利用最新的索引号乘以宽度  去滚动图片
-            var translateX = -index * w;
+            var translatex = -index * w;
             ul.style.transform = 'translateX(' + translatex + 'px)';
         } else if (index < 0) {
             index = 2;
             ul.style.transition = 'none';
-            //利用最新的索引号乘以宽度  去滚动图片
-            var translateX = -index * w;
+            //利用最新的索引号乘以宽度  去滚动图片x
+            var translatex = -index * w;
             ul.style.transform = 'translateX(' + translatex + 'px)';
         }
         //3、小圆点跟随着变化
@@ -59,6 +59,7 @@ window.addEventListener('load', function () {
         // 手指拖动的时候，不需要动画效果所以要取消过渡效果
         ul.style.transition = 'none';
         ul.style.transform = 'translateX(' + translatex + 'px)';
+        console.log('touchmove' + index);
         flag = true; // 如果用户手指移动过我们再去判断否则不做判断效果
         e.preventDefault(); // 阻止滚动屏幕的行为
     });
@@ -84,6 +85,7 @@ window.addEventListener('load', function () {
                 ul.style.transform = 'translateX(' + translatex + 'px)';
             }
         }
+        console.log('touchmove' + index);
         // 手指离开的时候就重新开启定时器
         clearInterval(timer);
         timer = setInterval(function () {
