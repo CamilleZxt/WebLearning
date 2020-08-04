@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端轮播图</title>
+    <style>
+        body {
+            margin: 0 auto;
+        }
+
+        .focus {
+            position: relative;
+            width: 375px;
+            height: 75px;
+            margin-top: 50px;
+            overflow: hidden;
+        }
+
+        .focus ul {
+            overflow: hidden;
+            list-style: none;
+            /* margin: 0; */
+            padding: 0;
+            width: 500%;
+            margin-left: -100%;
+        }
+
+        .focus ul li {
+            float: left;
+            width: 20%;
+
+        }
+
+        .focus ul li img {
+            width: 100%;
+        }
+
+        .focus ol {
+            position: absolute;
+            margin: 0;
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .focus ol li {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: #fff;
+            list-style: none;
+            border-radius: 2px;
+            transition: all .3s;
+        }
+
+        .focus ol li.current {
+            width: 15px;
+        }
+    </style>
+    <script src="移动端轮播图.js"></script>
+</head>
+
+<body>
+    <!-- 焦点图模块 -->
+    <div class="focus">
+        <ul>
+            <li><img src="upload/focus3.jpg" alt=""></li>
+            <li><img src="upload/focus1.jpg" alt=""></li>
+            <li><img src="upload/focus2.jpg" alt=""></li>
+            <li><img src="upload/focus3.jpg" alt=""></li>
+            <li><img src="upload/focus1.jpg" alt=""></li>
+        </ul>
+        <!-- 小圆点 -->
+        <ol>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+
+</body>
+
+</html>
