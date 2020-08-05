@@ -45,7 +45,7 @@ function moveToAround(k,rows,cols,row,col,visited){
 
 //判断机器人能否进入方格
 function isCheck(k,rows,cols,row,col,visited){
-	if(row>=0 && col>=0 && row<=rows && col<=cols && getDigitSum(row,col)<=k && !visited[row][col])
+	if(row>=0 && col>=0 && row<rows && col<cols && getDigitSum(row,col)<=k && !visited[row][col])
 		return true;
 	return false;
 }
@@ -65,5 +65,5 @@ function getDigitSum(row,col){
 
 
 //测试
-console.log(moveCount(5,10,10))
+console.log(moveCount(7,2,3))
 //21
