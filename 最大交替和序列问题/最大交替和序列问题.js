@@ -28,7 +28,9 @@ function maxAlternateSum(nums){
 	return max;
 }
 
-var nums = [2,3,-2,4,5,-6];
+// var nums = [2,3,-2,4,5,-6];//11
+// var nums = [1,2,3,4,5];//5
+var nums = [1,-2,3,-4,5];//15
 console.log(maxAlternateSum(nums));
 
 
