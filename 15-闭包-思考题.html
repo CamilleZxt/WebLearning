@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 思考题 1：
+
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function() {
+                return function() {
+                    return this.name;//匿名函数，this指向window
+                };
+            }
+        };
+
+        // console.log(object.getNameFunc);//function() { return function() {  return this.name; }; }
+        // console.log(object.getNameFunc());//function() { return this.name;  };
+        console.log(object.getNameFunc()())//"The Window"
+        // var f = object.getNameFunc();
+        // // 类似于
+        // var f = function() {
+        //     return this.name;
+        // }
+        // f();
+
+        // 思考题 2：
+
+        // var name = "The Window";　　
+        // var object = {　　　　
+        //     name: "My Object",
+        //     getNameFunc: function() {
+        //         var that = this;//this指向getNameFunc的调用者，这里就是object
+        //         return function() {
+        //             return that.name;//that指向的是object；此时出现了闭包，闭包函数是getNameFunc
+        //         };
+        //     }
+        // };
+        // console.log(object.getNameFunc()())//"My Object"
+    </script>
+</body>
+
+</html>

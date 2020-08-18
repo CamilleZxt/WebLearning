@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sds</title>
+</head>
+<body>
+	<script>
+		var map = new Map();
+		map.set("1",["ate","eat"]);
+		map.set("2",["afe","eft"]);
+		map.set("3",["afde","dft"]);
+		var arr = [12,34,656];
+
+		//
+		for(var str of map){
+			console.log(str);//输出的是[key,value]
+			console.log(str[1]);//若只要value，需要str[1]
+		}
+		for(var str of arr){
+			console.log(str);//输出的是value
+		}
+
+		// for...in是es5标准，用来遍历key值，遍历对象和数组
+		
+		for(var str in arr){
+			console.log(str);//输出的是index
+		}
+		for(var str in map){
+			console.log(str);//无输出
+		}
+	</script>
+</body>
+</html>

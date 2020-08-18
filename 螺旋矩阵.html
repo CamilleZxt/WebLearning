@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>螺旋矩阵</title>
+</head>
+<body>
+	<script>
+		function spiralOrder(matrix) {
+		    if(matrix.length === 0){
+		        return [];
+		    }
+
+		    var direction = "right";
+		    var left = 0;
+		    var right = matrix[0].length -1;
+		    var top = 0;
+		    var bottom = matrix.length -1;
+		    var result = [];
+
+		    while(left <= right && top <= bottom){
+		        if(direction === "right"){
+		            for(let i=left;i<=right;i++){
+		                result.push(matrix[top][i]);
+		            }
+		            top++;
+		            direction = "down";
+		        }else if(direction === "down"){
+		            for(let i=top;i<=bottom;i++){
+		                result.push(matrix[i][right]);
+		            }
+		            right--;
+		            direction = "left";
+		        }else if(direction === "left"){
+		            for(let i=right;i>=left;i--){
+		                result.push(matrix[bottom][i]);
+		            }
+		            bottom--;
+		            direction = "top";
+		        }else if(direction === "top"){
+		            for(let i=bottom;i>=top;i--){
+		                result.push(matrix[i][left]);
+		            }
+		            left++;
+		            direction = "right";
+		        }
+		    }
+
+		    return result;
+
+	};
+
+	var matrix = [[ 1, 2, 3 ],[ 4, 5, 6 ],[ 7, 8, 9 ]];
+	var data = spiralOrder(matrix);
+	console.log(data);
+
+	</script>
+
+</body>
+</html>
