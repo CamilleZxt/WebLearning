@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单实现apply、call、bind</title>
+</head>
+
+<body>
+    <script>
+        //apply函数接收两个参数，第一个是this的指向，第二个是参数数组
+        Function.prototype.apply = function (context, arr) {
+            //因为传进来的context有可能是null,则context为window对象
+            //context = typeof context !== "object" ? window : context || window
+            context = (context) ? Object(context) : window;
+            //创建context的一个新属性，用来接收调用apply方法的函数,也就是this
+            context.fn = this;
+
+            //由于原生apply方法调用直接执行的，有执行结果
+            var result;
+
+
+            if (!arr) {
+                //如果没有携带参数，参数数组为空
+                // 直接执行
+                result = context.fn();
+            } else {
+                //将参数数组解构
+                result = context.fn(...arr);
+            }
+
+            // 最后将创建的 fn 属性删除
+            delete context.fn;
+            return result;
+        }
+
+
+        // let foo = {
+        //     value: 1
+        // }
+        // function bar(name, age, value) {
+        //     console.log(this.name) // undefined
+        //     console.log(this.age) // undefined
+        //     console.log(this.value) // 1
+        // }
+
+        // bar.apply(foo, ["camille", "20", 20])
+
+
+        //call函数接收多个参数，第一个是this的指向，之后是每个参数
+        Function.prototype.call = function (context) {
+            //因为传进来的context有可能是null,则context为window对象
+            //context = typeof context !== "object" ? window : context || window
+            context = (context) ? Object(context) : window;
+            //创建context的一个新属性，用来接收调用call方法的函数,也就是this
+            context.fn = this;
+
+            //由于原生call方法调用直接执行的，有执行结果
+            var result;
+
+            //处理参数
+            //在所有的函数中有一个arguments对象，arguments对象指向函数的参数，arguments object is an Array-like object，除了length，不具备数组的其他属性
+            //所以利用解构赋值，将arguments对象转为数组,[...arguments]
+            //由于[...arguments][0]就是context，那么真正的参数要去掉context
+            var args = [...arguments].slice(1);
+
+            // 执行
+            result = context.fn(...args);
+
+            //
+            delete context.fn;
+            return result;
+
+        }
+
+        // let foo = {
+        //     value: 1
+        // }
+        // function bar(name, age, value) {
+        //     console.log(this.name) // undefined
+        //     console.log(this.age) // undefined
+        //     console.log(this.value) // 1
+        // }
+
+        // bar.call(foo, "camille", "20", 20);
+
+
+        //bind函数和call一样，接收多个参数，第一个是this的指向，之后是每个参数
+        Function.prototype.bind = function (context) {
+            //因为传进来的context有可能是null,则context为window对象
+            //context = typeof context !== "object" ? window : context || window
+            context = (context) ? Object(context) : window;
+            //创建context的一个新属性，用来接收调用bind方法的函数,也就是this
+            context.fn = this;
+
+            //处理参数
+            //在所有的函数中有一个arguments对象，arguments对象指向函数的参数，arguments object is an Array-like object，除了length，不具备数组的其他属性
+            //所以利用解构赋值，将arguments对象转为数组,[...arguments]
+            //由于[...arguments][0]就是context，那么真正的参数要去掉context
+            var args = [...arguments].slice(1);
+
+            //由于调用原生的bind函数是不执行的，而是返回一个新的函数对象,调用新函数对象才执行
+
+            return function () {
+                context.fn(...args);
+                delete context.fn;
+            }
+
+        }
+
+        //利用call实现bind
+        Function.prototype.bind2 = function () {
+            var context = arguments[0] || window;
+
+            //保存用来接收调用bind方法的函数,也就是this
+            var _this = this;
+
+            //处理参数
+            //在所有的函数中有一个arguments对象，arguments对象指向函数的参数，arguments object is an Array-like object，除了length，不具备数组的其他属性
+            //所以利用解构赋值，将arguments对象转为数组,[...arguments]
+            //或者利用Array.from(arguments)方法
+            //由于[...arguments][0]就是context，那么真正的参数要去掉context
+
+            let len = arguments.length;
+            let argument = [...arguments].slice(1);//arguments数组只有1到len-1，也就是真正的参数
+            // console.log(argument);
+            //由于调用原生的bind函数是不执行的，而是返回一个新的函数对象,调用新函数对象才执行
+
+            return function () {
+                // _this.apply(context, argument);
+                _this.call(context, ...argument);
+                // delete context.fn;
+            }
+
+        }
+
+
+        let foo = {
+            value: 1
+        }
+        function bar(name, age, value) {
+            console.log(this.name) // undefined
+            console.log(this.age) // undefined
+            console.log(this.value) // 1
+        }
+
+        bar.bind2(foo, "camille", "20", 20)();
+
+
+    </script>
+</body>
+
+</html>
