@@ -1,9 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>index</title>
+	<style>
+		#container {
+			height: 500px;
+			background-color: #444;
+			background-size: size;
+			color: aliceblue;
+			font-size: 20px;
+			text-align: center;
+			line-height: 500px;
+		}
+	</style>
 </head>
-<body>
 
+<body>
+	<div id="container">
+
+	</div>
+	<script src="debounce.js"></script>
+	<script>
+		let count = 0;
+		//演示事件是如何频繁发生的？
+		let container = document.querySelector('#container');
+		function doSomething() {
+			// console.log(this);
+			container.innerHTML = count++;
+		}
+		//只要鼠标悬浮，就会执行doSomething函数
+		// container.onmousemove = doSomething;
+
+		//利用underscore.js中的debounce()方法
+		container.onmousemove = debounce(doSomething, 300);
+	</script>
 </body>
+
 </html>
