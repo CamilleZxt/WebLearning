@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>throttle</title>
+	<style>
+		#container {
+			height: 500px;
+			background-color: #444;
+			background-size: size;
+			color: aliceblue;
+			font-size: 20px;
+			text-align: center;
+			line-height: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.11.0/underscore-min.js"></script>
+	<script src="throttle.js"></script>
+	<script>
+		let count = 0;
+		//演示事件是如何频繁发生的？
+		let container = document.querySelector('#container');
+		function doSomething(e) {
+			// console.log(this);//this需要改变指向到触发事件的对象
+			console.log(e);//e应为触发事件的对象 事件
+			container.innerHTML = count++;
+		}
+		//只要鼠标悬浮，就会执行doSomething函数
+		// container.onmousemove = doSomething;
+
+		//利用underscore.js中的throttle()方法，参数：事件响应函数，时间间隔，{leading:false;training:false}
+		// container.onmousemove = _.throttle(doSomething, 2000);
+
+		container.onmousemove = throttle(doSomething, 2000, { leading: false, trailing: true });
+
+	</script>
+</body>
+
+</html>
