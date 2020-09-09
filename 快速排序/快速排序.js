@@ -14,7 +14,7 @@ function quickSort(arr,from,to){
 
 	let i = from
 	let j = to
-	if(i >= j) return
+	if(i >= j) return 
 
 	//选基点
 	let base = arr[from]

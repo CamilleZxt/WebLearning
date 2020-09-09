@@ -18,6 +18,6 @@ function permutation(s){
 	return Array.from(set); 
 }
 
-//test
+//test 
 console.log(permutation("abc"));//["abc", "bac", "cba", "bca", "cab", "acb"]
 console.log(permutation("aba"));//["aba", "baa", "aab"]
