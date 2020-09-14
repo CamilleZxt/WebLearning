@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>招商银行测开笔试题</title>
+</head>
+<body>
+
+	<script>
+
+
+    /**
+     * [招商银行测开笔试题:求前n个斐波那契数列中“1”出现的次数,如fib(10)序列为“0112358132134”，“1”出现的次数为4]
+     * @param  {[type]} n [description]
+     * @return {[type]}   [description]
+     */
+    function fib(n){
+
+        var a=0,b=1;
+        var count=0;
+        var str = "01";
+        if(n==1) {
+            count=0;
+        }
+        if(n==2) {
+            count=1;
+        }
+        //s.append("01");
+        for(let i=3;i<=n;i++) {
+            b=a+b;
+            a=b-a;
+            //String c=String.valueOf(b); //将int型转化为String
+            str = str + b;
+        }
+
+        for(let j=0; j<str.length; j++) {
+            if(str[j] == '1') {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+
+
+    console.log(fib(10));
+    
+    
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>美团笔试1</title>
+</head>
+<body>
+	<script>
+		/**
+		 * 给出A，B两国想要的土地，输出只有A国想要的土地数，只有B国想要的土地数，两个国家都想要的土地数。
+		 * 思路：简单的求交集大小，甚至不用给出交集，先遍历A，用set存下来，再遍历B，遇到set中有的就cnt++，最后输出A-cnt, B-cnt, cnt
+		 */
+		
+		var A = [1,2,4,3,5,7];
+		var B = [1,2,12,5,4,8,9];
+
+		var set = new Set(A);
+		var count = 0;
+
+		var res = [];//保存交集集合，对于本题来说，可以不要
+
+		for(let i=0;i<B.length;i++){
+			if(set.has(B[i])){
+				count++;
+				res.push(B[i]);
+			}
+		}
+
+		console.log("两个国家都想要的土地:" + res);
+		console.log("两个国家都想要的土地数:" + count);
+		console.log("只有A国想要的土地数:" + (A.length - count));
+		console.log("只有B国想要的土地数:" + (B.length - count));
+
+
+		
+		var setRes = new Set(res);
+		//输出只有A国想要的土地有哪些？
+		var resA = [];
+		for(let i=0;i<A.length;i++){
+			if(!setRes.has(A[i])){
+				resA.push(A[i]);
+			}
+		}
+		console.log("只有A国想要的土地:" + resA);
+		//输出只有B国想要的土地有哪些？
+		var resB = [];
+		for(let i=0;i<B.length;i++){
+			if(!setRes.has(B[i])){
+				resB.push(B[i]);
+			}
+		}
+		console.log("只有A国想要的土地:" + resB);
+
+
+	</script>
+
+</body>
+</html>

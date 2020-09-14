@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多数元素</title>
+</head>
+
+<body>
+    <script>
+        var majorityElement = function (nums) {
+            var len = nums.length;
+
+            if (len === 0) {
+                return;
+            }
+
+            if (len === 1) {
+                return nums[0];
+            }
+
+            var map = new Map();
+
+            for (let i = 0; i < len; i++) {
+                if (!map.has(nums[i])) {
+                    map.set(nums[i], 1);
+                } else {
+                    map.set(nums[i], map.get(nums[i]) + 1);
+                }
+            }
+
+            for (let value of map) {
+                // console.log(value);
+                if (value[1] > Math.floor(len / 2)) {
+                    return value[0];
+                }
+            }
+            return;
+        };
+
+        var nums = [2, 2, 1, 1, 1, 2, 2];
+        var num = majorityElement(nums);
+        console.log(num);
+    </script>
+</body>
+
+</html>

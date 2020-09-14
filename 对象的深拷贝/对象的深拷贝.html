@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的深拷贝</title>
+</head>
+
+<body>
+    <script>
+        function deepCopy(newObj, oldObj) {
+            for (var k in oldObj) {
+                var item = oldObj[k];
+                if (item instanceof Array) {
+                    newObj[k] = [];
+                    deepCopy(newObj[k], item);
+                } else if (item instanceof Function) {
+                    newObj[k] = item;
+                } else if (item instanceof Object) {
+                    newObj[k] = {};
+                    deepCopy(newObj[k], item);
+                } else {
+                    newObj[k] = item;
+                }
+            }
+        }
+        var obj = {
+            id: 1,
+            msg: {
+                age: 18
+            },
+            func: function () {
+                console.log("func");
+            },
+            color: ['pink', ['red']]
+        };
+        var newObj = {};
+        deepCopy(newObj, obj);
+        console.log(newObj);
+        newObj.func();
+    </script>
+</body>
+
+</html>

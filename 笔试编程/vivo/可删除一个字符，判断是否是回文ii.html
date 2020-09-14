@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可删除一个字符，判断是否是回文ii</title>
+</head>
+
+<body>
+    <script>
+        var validPalindrome = function (s) {
+            if (s.length < 2) {
+                return true;
+            }
+
+            function isPalindrome(left, right) {
+                while (left < right) {
+                    if (s[left] !== s[right]) {
+                        return false;
+                    }
+                    left++;
+                    right--;
+                }
+                return true;
+            }
+
+            let left = 0;
+            let right = s.length - 1;
+            while (left < right) {
+                if (s[left] !== s[right]) {
+                    let res1 = isPalindrome(left + 1, right);
+                    let res2 = isPalindrome(left, right - 1);
+                    if (res1) {
+                        return s.slice(0, left) + s.slice(left + 1);
+                    } else if (res2) {
+                        return s.slice(0, right) + s.slice(right + 1);
+                    } else {
+                        return -1;
+                    }
+                } else {
+                    left++;
+                    right--;
+                }
+            }
+            return s;
+        };
+
+        var s = "abca";
+        var str = validPalindrome(s);
+        console.log(str);
+    </script>
+</body>
+
+</html>

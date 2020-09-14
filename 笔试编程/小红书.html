@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>编程</title>
+</head>
+
+<body>
+	<script>
+
+		var s = "abaccd";
+		var map = new Map();
+		var res = [];
+
+		for (let i = 0; i < s.length; i++) {
+			if (!map.has(s[i])) {
+				if (i == 0) {
+					res[i] = 1;
+				} else {
+					res[i] = res[i - 1] + 1;
+				}
+				map.set(s[i], i);
+			} else {
+				res[i] = res[map.get(s[i])];
+			}
+		}
+		console.log(res[res.length - 1]);
+
+
+
+	</script>
+
+</body>
+
+</html>

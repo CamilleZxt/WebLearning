@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>迷宫寻路</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var prices = [1,5,10,20,30,50]; 
+		// prices = prices.sort((a,b) => {return parseInt(b)-parseInt(a)});
+		// console.log(prices);
+		/**
+		 * 给定一个包含非负整数的 M x N 迷宫，请找出一条从左上角到右下角的路径，使得路径上的数字总和最小。每次只能向下或者向右移动一步。
+		 * [mn description]
+		 * @type {[type]}
+		 */
+		var mn = readline();
+		mn = mn.trim().split(' ');
+		var m = mn[0];
+		var n = mn[1];
+		var matrix = [];
+		for(let i=0;i<m;i++){
+		    var line = readline();
+		    line = line.trim().split(" ").slice(0,n);
+		    matrix.push(line.map(Number));
+		}
+        
+        //print(matrix);
+		var path = [];
+		for(let i =0;i<m;i++){
+		    path.push([]);
+		}
+		 
+		path[0][0] = matrix[0][0];
+		for(let i=1;i<n;i++){
+		    path[0][i] = path[0][i-1] + matrix[0][i];
+           // print(path[0][i]);
+		}
+
+		for(let i=1;i<m;i++){
+		    path[i][0] = path[i-1][0] + matrix[i][0];
+          //  print(path[i][0]);
+		}
+		 
+		for(let i=1;i<m;i++){
+		    for(let j=1;j<n;j++){
+		        path[i][j] = Math.min(path[i-1][j]+matrix[i][j],path[i][j-1]+matrix[i][j]);
+		    }
+		}
+		 
+		print(path[m-1][n-1]);
+	</script>
+</body>
+</html>
+<!-- 10 102
+1 3 1 0 1 3 1 0 1 2
+0 5 1 9 0 5 1 9 2 5
+4 2 1 1 4 2 1 1 3 1
+1 3 1 0 1 3 1 0 4 0
+0 5 1 9 0 5 1 9 5 4
+4 2 1 1 4 2 1 1 1 2
+1 3 1 0 1 3 1 0 2 1
+0 5 1 9 0 5 1 9 3 9
+4 2 1 1 4 2 1 1 4 0
+1 3 1 0 1 3 1 0 5 5
+
+28 -->

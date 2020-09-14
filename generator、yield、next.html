@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>generator、yield、next</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var foo,foo1;
+		let compute = function* (a, b) {
+		  let sum = a + b;
+		  // yield console.log(sum);
+		  foo = yield console.log(sum);
+		  let c = a - b;
+		  // console.log(c);
+		  foo1 =yield console.log(c);
+		  // let d = a * b;
+		  // console.log(c);
+		  // yield console.log(d);
+		  // let e = a / b;
+		  // console.log(e);
+		  return 'ok';
+		};
+		// 执行一下这个函数得到 Generator 实例
+		let generator = compute(4, 2);
+		// 要使得函数中封装的代码逻辑得到执行，还得需要调用一次next方法。
+		// generator.next();
+		
+		console.log(generator.next());
+		// console.log(generator.next("hh"));
+		console.log(foo);//若返回的generator对象只执行了一次next方法，foo的值还没被赋值
+		console.log(foo1);//若返回的generator对象只执行了一次next方法，foo的值还没被赋值
+		console.log(generator.next("ss"));
+		console.log(foo);//若返回的generator对象只执行了一次next方法，foo的值还没被赋值
+		console.log(foo1);//若返回的generator对象只执行了一次next方法，foo的值还没被赋值
+		console.log(generator.next("cccs"));
+		console.log(foo);//若返回的generator对象只执行了一次next方法，foo的值还没被赋值
+		console.log(foo1);//若返回的generator对象只执行了一次next方法，foo的值还没被赋值
+
+	</script>
+</body>
+</html>

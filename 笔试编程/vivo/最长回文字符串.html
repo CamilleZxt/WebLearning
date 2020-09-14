@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最长回文字符串</title>
+</head>
+
+<body>
+    <script>
+
+        // var s = readline();
+        // s = s.trim();
+        var res = [];
+        //var count = 0;
+        var s = "abbcbb";
+        function expandAround(left, right) {
+            while (left >= 0 && right < s.length && s[left] === s[right]) {
+                //count++;
+                if (right - left >= 1) {
+                    res.push(s.slice(left, right + 1));
+                }
+
+                left--;
+                right++;
+            }
+        }
+        if (s.length === 1 || s.length === 0) {
+            print(0);
+        } else {
+            for (let i = 0; i < s.length; i++) {
+                expandAround(i, i + 1);
+                expandAround(i - 1, i + 1);
+            }
+        }
+        console.log(res.length);
+    </script>
+</body>
+
+</html>

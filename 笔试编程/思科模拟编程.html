@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>思科模拟编程</title>
+</head>
+<body>
+	<script>
+		var str = ' "<sip:10000@172.16.130.42>';
+		// var str = 'huntpilotname<sip:10000@172.16.130.42>';
+		// var str = 'huntpilotname”<sip:10000@172.16.130.42>';
+		// var str = '%22huntpilotname%22<sip:10000@172.16.130.42>';
+		// var str = '%22huntpilot%22name%22"<sip:10000@172.16.130.42>';
+		str = str.trim();
+		str = str.replace(/<\w+:\w+@\w+.\w+.\w+.\w+>/,"");
+		str = str.replace(/"/g,"");
+		str = str.replace(/”/g,"");
+		// console.log(str);
+
+		var arr = str.split("%22");
+		// console.log(arr);
+		
+		if(arr.length === 1){
+			console.log(arr[0]);
+		}else{
+			//arr去空
+			var name1 = [];
+			for(let i=0;i<arr.length;i++){
+				if(arr[i] != ""){
+					name1.push(arr[i]);
+				}
+			}
+			console.log(name1.join("%22"));
+		}
+	</script>
+</body>
+</html>
