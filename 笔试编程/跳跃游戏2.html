@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //会超时
+        var jump = function (nums) {
+            let len = nums.length;
+            let memo = new Array(len).fill(0);
+            // console.log(memo);
+            for (let i = len - 2; i >= 0; i--) {
+                if (nums[i] === 0) {
+                    memo[i] = -1;//表示此路不通
+                } else {
+                    let length = i + nums[i] <= len - 1 ? i + nums[i] : len - 1
+
+                    let temp = memo.slice(i + 1, length + 1);
+                    temp = temp.filter((value) => { return value != -1 })
+                    memo[i] = 1 + Math.min(...temp);
+                }
+
+
+            }
+            return memo[0];
+        };
+
+        //通过
+        var jump2 = function (nums) {
+            let len = nums.length;
+            if (len < 2) {
+                return 0;
+            }
+            let jumps = 0;//当前最小走得步数
+            let curMax = 0;//当前能到达的最远的下标
+            let curEnd = 0;//当前能到达得下标
+
+            for (let i = 0; i < nums.length - 1; i++) {
+
+                curMax = Math.max(curMax, i + nums[i]);
+
+                if (i == curEnd) {
+                    //前一项最大到达点，当前已走完，需要更新当前最大
+                    jumps++;
+                    curEnd = curMax;
+                }
+            }
+            return jumps;
+        };
+
+        var nums = [2, 3, 1, 1, 4];
+        var res = jump2(nums);
+        // var res = jump(nums);
+        console.log(res);
+    </script>
+</body>
+
+</html>

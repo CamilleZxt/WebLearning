@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推多米诺骨牌</title>
+</head>
+
+<body>
+    <script>
+        function Solution(S) {
+            let R = S.split("");
+            let L = S.split("");
+            //console.log(R);
+            for (let i = 0; i < R.length; i++) {
+                if (R[i] == "." && R[i - 1] == "R") {
+                    R[i] = "R";
+                }
+            }
+            console.log(R);
+            for (let i = L.length - 1; i >= 0; i--) {
+                if (L[i] == "." && L[i + 1] == "L") {
+                    L[i] = "L";
+                }
+            }
+            console.log(L);
+
+            let str = "";
+            let i = 0;
+            let len = S.length;
+            while (i < len) {
+                if (L[i] === R[i]) {
+                    str += R[i];
+                    i++;
+                } else if (L[i] == ".") {
+                    str += R[i];
+                    i++;
+                } else if (R[i] == ".") {
+                    str += L[i];
+                    i++;
+                } else if (L[i] !== R[i]) {
+                    let count = 1;
+                    while (i < len) {
+                        if (L[i] !== R[i] && L[i + 1] == L[i] && R[i + 1] == R[i]) {
+                            i++;
+                            count++;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    if (count % 2 == 0) {
+                        for (let j = 0; j < count / 2; j++) {
+                            str += "R";
+                        }
+                        for (let j = 0; j < count / 2; j++) {
+                            str += "L";
+                        }
+                    } else if (count % 2 == 1) {
+                        for (let j = 0; j < Math.floor(count / 2); j++) {
+                            str += "R";
+                        }
+                        str += ".";
+                        for (let j = 0; j < Math.floor(count / 2); j++) {
+                            str += "L";
+                        }
+                    }
+
+                    i++;
+                }
+            }
+
+            return str;
+        }
+
+
+        var S = ".L.R...LR..L..";
+        console.log(Solution(S));
+    </script>
+</body>
+
+</html>

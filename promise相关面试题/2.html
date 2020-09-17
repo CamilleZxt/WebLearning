@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        setTimeout(() => {
+            console.log(1)
+        }, 0)
+        new Promise((resolve) => {
+            console.log(2)
+            // resolve()
+        }).then(() => {
+            console.log(3)
+        }).then(() => {
+            console.log(4)
+        })
+        console.log(5)
+        //为什么先输出的2，不应该是先执行同步代码，输出5吗？
+        //ouput:2 5 3 4 1
+    </script>
+</body>
+
+</html>

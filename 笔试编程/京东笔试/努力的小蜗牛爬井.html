@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>努力的小蜗牛爬井</title>
+</head>
+
+<body>
+    <script>
+        /**
+        小蜗牛从m米的井里往上爬，每天白天爬n厘米，第一天晚上会下降n/2厘米，第二天晚上会下降n/2+n/4厘米， 第三天晚上会下降n/2+n/4+n/8厘米， 
+        以此类推，求小蜗牛第几天能爬出井？
+        */
+
+        var n = 60;
+        var m = 1;
+        m = m * 100;
+        var total = 0;
+        var sum = 0;
+        var i = 1;
+        while (total < m) {
+            sum += n / (Math.pow(2, i));
+            total += n;
+            if (total >= m) {
+                break;
+            } else {
+                total -= sum;
+            }
+            i++;
+            // console.log(total);
+        }
+        console.log(i);
+    </script>
+</body>
+
+</html>

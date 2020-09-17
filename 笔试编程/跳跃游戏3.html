@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var canReach = function (arr, start) {
+            if (!arr.some((a) => { return a === 0 })) {
+                return false;
+            }
+
+            let visited = new Array(arr.length).fill(0);
+
+            function dfs(arr, start) {
+                if (start < 0 || start > arr.length) {
+                    return false;
+                }
+
+                //如果已访问过，则不通
+                if (visited[start] != 0) {
+                    return false;
+                }
+
+                if (arr[start] == 0) {
+                    return true;
+                }
+                visited[start] = 1;
+
+                return dfs(arr, start + arr[start]) || dfs(arr, start - arr[start]);
+            }
+
+            return dfs(arr, start);
+        };
+
+        var arr = [3, 0, 2, 1, 2];
+        var start = 2;
+        console.log(canReach(arr, start))
+    </script>
+</body>
+
+</html>
