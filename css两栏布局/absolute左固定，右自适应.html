@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        .left {
+            width: 200px;
+            position: absolute;
+            height: 500px;
+            background-color: pink;
+        }
+
+        .right {
+            margin-left: 220px;
+            height: 500px;
+            background-color: skyblue;
+        }
+
+        .content {
+            width: 200px;
+            position: absolute;
+            height: 500px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left">
+            <div class="content">leftleftleftleft</div>
+        </div>
+        <div class="right">right</div>
+    </div>
+</body>
+
+</html>

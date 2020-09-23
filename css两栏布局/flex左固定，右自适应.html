@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .left {
+            width: 200px;
+            background-color: pink;
+        }
+
+        .right {
+            /* width: 200px; */
+            background-color: skyblue;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+</body>
+
+</html>
