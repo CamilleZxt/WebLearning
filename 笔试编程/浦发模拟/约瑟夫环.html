@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 有10(100人或者n个)个人围成一圈，从第一个人开始报数（报1、2、3），只要报3的人就出去， 然后不停的循环报数，直到最后剩下一个人，计算出这个人最开始的位置。
+        //其实就是约瑟夫环问题
+        //样例输入：10
+        //样例输出：4
+        function main(param_1, param_2, param_n) {
+            //请勿修改main()的函数名称
+            //输入数据时，字符串数据前后需加英文引号。输入多个数据时请用英文逗号隔开，并且与main()中参数个数相同
+            var a = new Array(param_1).fill(1);
+            let count = 0;
+            let j = 0;
+            let len = param_1;
+            while (len > 1) {
+                if (a[j] == 1) {
+                    count++;
+                    if (count == 3) {
+                        count = 0;
+                        a[j] = 0;
+                        len--;
+                    }
+                }
+                j++;
+                if (j == param_1) {
+                    j = 0;
+                }
+            }
+
+            for (let i = 0; i < param_1; i++) {
+                if (a[i] == 1) {
+                    console.log(a[i]);
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
