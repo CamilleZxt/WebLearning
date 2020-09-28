@@ -35,10 +35,25 @@
             },
             color: ['pink', ['red']]
         };
-        var newObj = {};
-        deepCopy(newObj, obj);
-        console.log(newObj);
-        newObj.func();
+        // var newObj = {};
+        // deepCopy(newObj, obj);
+        // console.log(newObj);
+        // newObj.func();
+
+        function deepclone(arr) {
+            let newarr = arr instanceof Array ? [] : {};
+            for (let k in arr) {
+                if (arr.hasOwnProperty(k)) {
+                    newarr[k] = arr[k] && typeof arr[k] === 'object' ? deepclone(arr[k]) : arr[k]
+                }
+            }
+            return newarr
+        }
+
+
+
+
+
     </script>
 </body>
 

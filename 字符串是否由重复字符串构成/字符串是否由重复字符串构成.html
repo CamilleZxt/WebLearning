@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //请用程序判断一个非空字符串是否是由所含的一个子串重复多次组成，字符串只包含小写字母且长度不超过5000。
+        //举例：abdeabdeabde，返回true，abdeabdeabd，返回false
+
+
+        function solution(s) {
+
+            //解法1：将字符串每次前 i 位为一个整体，依次与字符串每隔 i 位相比较来判断
+            function equal(s1, s2) {
+
+                if (s1.length != s2.length) {
+                    return false;
+                }
+                s1 = s1.split("");
+                s2 = s2.split("");
+                for (let i = 0; i < s1.length; i++) {
+                    if (s1[i] != s2[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+
+            if (s.length < 2) {
+                return false;
+            }
+            var i = 1;
+            while (i < s.length) {
+                //保证总长度是i的倍数
+                if (s.length % i == 0) {
+                    let j = i;
+                    let k = j + i;
+                    while (k <= s.length) {
+                        let temp = s.slice(0, i);
+                        let sub = s.slice(j, k);
+                        //如果两子串不相等，直接退出内层while
+                        if (!equal(temp, sub)) {
+                            break;
+                        }
+
+                        //如果两子串相等
+                        j = j + i;
+                        k = k + i;
+                    }
+
+                    if (k > s.length) {
+                        return true;
+                    }
+                }
+                i++;
+            }
+            return false;
+
+
+
+            //解法2、正则表达式方法
+            //return /^([a-z]+)\1+$/.test(s);
+
+        }
+
+        var str1 = "abdeabdeabde";
+        var str2 = 'abdeabdeabd';
+        var res = solution(str1);
+        console.log(res);//true
+        res = solution(str2);
+        console.log(res);//false
+    </script>
+</body>
+
+</html>

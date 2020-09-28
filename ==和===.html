@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 'abc';
+
+        var b = 'abc';
+
+        var c = new String('abc');
+
+        var d = new String('abc');
+        console.log(a == b);//true
+        console.log(a === b);//true
+        console.log(a == c);//true
+        console.log(a === c);//false
+        console.log(d == c);//false
+        console.log(d === c);//false
+
+        //== != 相等和不相等 先转换再比较
+        //=== !== 全等和不全等 仅比较不转换
+    </script>
+</body>
+
+</html>

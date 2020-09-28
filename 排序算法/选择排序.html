@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //算法思想：选择排序，从头至尾扫描序列，找出最小的一个元素，和第一个元素交换，接着从剩下的元素中继续这种选择和交换方式，最终得到一个有序序列。
+        function selectSort(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i; j < arr.length; j++) {
+                    if (arr[i] > arr[j]) {
+                        let temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+                console.log("第" + (i + 1) + "趟：" + arr);
+
+            }
+
+            return arr;
+
+        }
+        var arr = [3, 4, 2, 5, 7, 9, 1];
+        arr = selectSort(arr);
+        console.log("finally result:" + arr);
+    </script>
+</body>
+
+</html>

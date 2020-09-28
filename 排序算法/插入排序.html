@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //算法思路：每趟将一个待排序的元素作为关键字，按照其关键字值得大小插入到已经排好的部分的适当位置上，知道插入完成。
+        function insertSort(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                let pos = i;
+                while (pos != 0 && arr[pos] < arr[pos - 1]) {
+
+                    let temp = arr[pos];
+                    arr[pos] = arr[pos - 1];
+                    arr[pos - 1] = temp;
+                    pos--;
+
+                }
+                console.log("第" + (i + 1) + "趟：" + arr);
+
+            }
+
+            return arr;
+
+        }
+        var arr = [3, 4, 2, 5, 7, 9, 1];
+        arr = insertSort(arr);
+        console.log("finally result:" + arr);
+    </script>
+</body>
+
+</html>
