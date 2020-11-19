@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。
+        /**
+        * @param {number} numRows
+        * @return {number[][]}
+        */
+        var generate = function (numRows) {
+            let dp = [];
+            if (numRows == 0) return dp;
+            dp[0] = [1];
+            if (numRows == 1) return dp;
+            dp[1] = [1, 1];
+            if (numRows == 2) return dp;
+            for (let i = 2; i < numRows; i++) {
+                dp[i] = [];
+                dp[i][0] = 1;
+                let j = 1;
+                for (; j < i; j++) {
+                    dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
+                }
+                dp[i][j] = 1;
+            }
+            return dp;
+        };
+
+        console.log(generate(5));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function numberToChinese(number) {
+            // console.log(number);
+            let result = [];
+            //数值
+            let rep = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+            //单位
+            let unit = ["", "十", "百", "千", "万", "十", "百", "千", "亿", "十", "百", "千"];
+            console.log(typeof number);
+            // console.log(typeof num);
+            let len = (number).toString().length;
+            if (len > 9) {
+                return 0;
+            }
+            let num = (number).toString();
+            let data = [];
+            let back = 0;
+            for (let i = 0; i < num.length; i++) {
+                data[i] = num[i];
+            }
+
+            // console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                //console.log(result instanceof Array);
+                if (data[i] != '0') {
+                    back = data.length - i - 1;
+                    result.push(rep[Number(data[i])]);
+                    result.push(unit[back]);
+                } else {
+                    //为0
+                    if (i == data.length - 5 && data[i] == '0') {
+                        //i==4 万位为0 
+                        if (data.length == 9 && data[1] == '0' && data[2] == '0' && data[3] == '0') {
+                            result.push(rep[0]);
+                        } else {
+                            result.push(unit[4]);
+                        }
+                    } else {
+                        if (i < data.length - 1 && data[i + 1] != '0') {
+                            result.push(rep[0]);
+                        }
+                    }
+                }
+            }
+
+            let i = result.length;
+            while (result[i - 1] == "零") {
+                i--;
+            }
+
+            result = result.slice(0, i + 1);
+
+            return result.join("").replace("零零", "零");
+        }
+
+
+        //let number = 1590;
+        var str = numberToChinese(100000000);
+        console.log(str);
+
+    </script>
+</body>
+
+</html>
